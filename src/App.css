@@ -1,0 +1,25 @@
+.navbar {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    background-opacity: 0.9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   
+  
+  }
+
+  .navbar .nav-link {
+    color: rgb(79, 59, 59); /* Make the nav links white */
+    font-size: 1.4rem; /* Increase the font size */
+    font-weight: 500; /* Optional: make the font slightly bolder */
+    transition: color 0.3s, text-decoration 0.3s; /* Smooth transitions */
+  }
+  
+  /* On hover, underline the nav links */
+  .navbar .nav-link:hover {
+    text-decoration: underline;
+    color:orangered; /* Ensure the color remains white on hover */
+  }
+  
+  .navbar .nav-link:hover {
+    text-decoration: underline;
+  }
