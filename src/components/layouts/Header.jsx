@@ -10,15 +10,15 @@ import { useState } from "react";
 const isAuthenticated = true || false;
 export const Header = () => {
   return (
-    <Navbar expand="md" className="navbar">
-      <Container>
+    <Navbar expand="md" className="navbar navbar-dark bg-dark">
+      <Container className="navbar navbar-dark bg-dark">
         <Navbar.Brand href="#home">
           <FcFactory />
           <span> ECOMMERCE WEBSITE</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto navbar">
             <Link className="nav-link hover:underline" to="/">
               Home
             </Link>
