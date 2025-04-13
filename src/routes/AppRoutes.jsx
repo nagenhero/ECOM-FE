@@ -16,8 +16,10 @@ const AppRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          {/* book landing or book detail page */}
 
           <Route />
+
           {/* private routes */}
           <Route path="/dashboard" element={<DashboardPage />} />
         </Route>
