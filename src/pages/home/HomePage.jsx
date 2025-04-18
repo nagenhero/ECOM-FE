@@ -5,8 +5,9 @@ import { FcFactory } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { VideoComponent } from "../../components/videoContent/VideoComponet";
 import CarasoulComponent from "../../components/carasoul/CarasoulComponent";
+import { CartComponent } from "../../components/cartComponet/cartComponent";
 
-const HomePage = () => {
+const HomePage = ({ addToCart }) => {
   return (
     <div>
       <div
@@ -26,8 +27,12 @@ const HomePage = () => {
       <div>
         <VideoComponent />
       </div>
-
-      <CarasoulComponent />
+      <div>
+        <CarasoulComponent />
+      </div>
+      <div>
+        <CartComponent addTOCart={addToCart} />
+      </div>
     </div>
   );
 };
