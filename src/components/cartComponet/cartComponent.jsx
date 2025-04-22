@@ -32,56 +32,56 @@ export const CartComponent = ({ addTOCart }) => {
         "https://i8.amplience.net/i/jpl/jd_ANZ0125538_a?qlt=92&w=984&h=1255&v=1&fmt=auto",
     },
     {
-      id: 3,
+      id: 5,
       name: "Headphones",
       price: 199.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c3191074-4ea8-494e-bd5f-e75c0357219a/AIR+JORDAN+1+LOW+SE.png",
     },
     {
-      id: 4,
+      id: 6,
       name: "Camera",
       price: 499.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5177ab73-1f54-41cb-9ec9-5095eca4e69c/K+NSW+CLUB+FLC+HDY+LBR.png",
     },
     {
-      id: 3,
+      id: 7,
       name: "Headphones",
       price: 199.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ed228574-1bdc-44a1-8a91-24f22af63ebb/AIR+JORDAN+1+MID+SE.png",
     },
     {
-      id: 4,
+      id: 8,
       name: "Camera",
       price: 499.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/35847a53-a6e5-427e-9023-0b9361b1c0dc/W+NSW+CLLCTN+NK+WR+TWILL+JKT.png",
     },
     {
-      id: 3,
+      id: 9,
       name: "Headphones",
       price: 199.99,
       image:
         "https://i8.amplience.net/i/jpl/jd_CZ9831-010_C_0001_a?qlt=92&w=750&h=957&v=1&fmt=auto",
     },
     {
-      id: 4,
+      id: 10,
       name: "Camera",
       price: 499.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1b06933c-8f4e-4dfb-bd1c-bab25728c1b8/W+NSW+STREET+WVN+JKT.png",
     },
     {
-      id: 3,
+      id: 11,
       name: "Headphones",
       price: 199.99,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a4e06622-576f-4b92-a3d9-fa94886bafda/AIR+MAX+DN8.png",
     },
     {
-      id: 4,
+      id: 12,
       name: "Camera",
       price: 499.99,
       image:

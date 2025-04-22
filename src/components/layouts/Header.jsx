@@ -8,14 +8,16 @@ import { Link } from "react-router-dom";
 import { FcFactory } from "react-icons/fc";
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import logo from "../../assets/aa.png";
 const isAuthenticated = true || false;
 export const Header = ({ cartCount }) => {
   return (
     <Navbar expand="md" className="navbar navbar-dark bg-dark">
       <Container className="navbar navbar-dark bg-dark">
         <Navbar.Brand href="#home">
-          <FcFactory />
-          <span> ECOMMERCE WEBSITE</span>
+          <img src={logo} alt="Logo" height="60" className="" />
+          {/* <FcFactory /> */}
+          <span> SNSS ECOMMERCE </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
