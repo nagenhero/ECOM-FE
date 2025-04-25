@@ -26,7 +26,7 @@ export const SignUpPage = () => {
       }}
     >
       <Form
-        style={{ width: "450px" }}
+        style={{ width: "550px" }}
         className="card p-3 shadow-lg border border-2 border-dark rounded p-5"
       >
         <h3 className="fw-bold text-primary">Signup</h3>

@@ -12,6 +12,7 @@ import { CustomCard } from "../../components/customCard/customCard";
 const HomePage = ({ addToCart }) => {
   const productStore = useSelector((store) => store.productInfo);
   const [searchedProducts, setSearchedProducts] = useState([]);
+
   useEffect(() => {
     setSearchedProducts(productStore.products);
   }, [productStore.products]);

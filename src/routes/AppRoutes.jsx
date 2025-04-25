@@ -6,6 +6,7 @@ import { DefaultLayout } from "../components/layouts/DefaultLayout";
 
 import SignInPage from "../pages/auth/SignInPage";
 import { SignUpPage } from "../pages/auth/SignUpPage";
+import { ProductLanding } from "../pages/product/ProductLanding";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
@@ -22,7 +23,8 @@ const AppRoutes = () => {
           <Route index element={<HomePage addToCart={addToCart} />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
-          {/* book landing or book detail page */}
+          {/* product landing page for particular product*/}
+          <Route path="product/:productid" element={<ProductLanding />} />
 
           <Route />
 
