@@ -7,6 +7,11 @@ import { DefaultLayout } from "../components/layouts/DefaultLayout";
 import SignInPage from "../pages/auth/SignInPage";
 import { SignUpPage } from "../pages/auth/SignUpPage";
 import { ProductLanding } from "../pages/product/ProductLanding";
+import { CustomerPage } from "../pages/customer/CustomerPage";
+import { ProductPage } from "../pages/product/ProductPage";
+import { MyOrderPage } from "../pages/customer-order/MyOrderPage";
+import { AllOrderPage } from "../pages/orders/allOrderPage";
+import { ReviewsPage } from "../pages/reviews/ReviewsPage";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
@@ -25,12 +30,15 @@ const AppRoutes = () => {
           <Route path="/signin" element={<SignInPage />} />
           {/* product landing page for particular product*/}
           <Route path="product/:productid" element={<ProductLanding />} />
-
-          <Route />
-
-          {/* private routes */}
-          <Route path="/dashboard" element={<DashboardPage />} />
         </Route>
+
+        {/* private routes */}
+        <Route path="admin/products" element={<ProductPage />} />
+        <Route path="admin/customers" element={<CustomerPage />} />
+        <Route path="admin/all-orders" element={<AllOrderPage />} />
+        <Route path="admin/reviews" element={<ReviewsPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/my-orders" element={<MyOrderPage />} />
       </Routes>
     </div>
   );
