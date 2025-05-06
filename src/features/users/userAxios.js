@@ -9,6 +9,7 @@ export const loginApi = (loginObj) => {
     data: loginObj,
     isPrivate: false,
     isRefreshToken: false,
+    showToast: true,
   });
 };
 export const fetchUserDetailApi = () => {
@@ -31,6 +32,17 @@ export const fetchNewAccessJWTApi = () => {
     url: authEP + "/renew-jwt",
     isPrivate: true,
     isRefreshToken: true,
+  };
+
+  return apiProcessor(Obj);
+};
+//logout
+export const logOutApi = () => {
+  const Obj = {
+    method: "get",
+    url: authEP + "/logout",
+    isPrivate: true,
+    isRefreshToken: false,
   };
 
   return apiProcessor(Obj);

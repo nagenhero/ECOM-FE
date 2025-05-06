@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { UserSignInForm } from "../../components/forms/UserSignInForm";
+import { Spinner } from "react-bootstrap";
 
 const SignInPage = () => {
-  return (
+  const [showLoader, setShowLoader] = useState(false);
+
+  return showLoader ? (
+    <div className="vh-100  d-flex justify-content-center align-items-center">
+      <Spinner animation="border" variant="primary" />
+    </div>
+  ) : (
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
@@ -14,7 +21,7 @@ const SignInPage = () => {
       }}
     >
       <div className="w-25 card p-3 shadow-lg">
-        <UserSignInForm />
+        <UserSignInForm setShowLoader={setShowLoader} />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import logo from "../../assets/aa.png";
 import { resetUser } from "../../features/users/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { logOutApi } from "../../features/users/userAxios";
 const isAuthenticated = true || false;
 export const Header = ({ cartCount }) => {
   const { user } = useSelector((store) => store.userInfo);
@@ -44,8 +45,10 @@ export const Header = ({ cartCount }) => {
                     // TODO: clear local and session storage add it to user Action
 
                     // reset user in store
+                    logOutApi();
                     localStorage.removeItem("refreshJWT");
                     sessionStorage.removeItem("accessJWT");
+
                     dispatch(resetUser());
                   }}
                   className="nav-link hover:underline"

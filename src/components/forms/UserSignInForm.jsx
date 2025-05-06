@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { userSignInInputs } from "../formDataInputs/userSignInInputs";
 import CustomInput from "../customInput/CustomInput";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { autoLogin, loginAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
 
-export const UserSignInForm = () => {
+export const UserSignInForm = ({ setShowLoaders }) => {
   const { user } = useSelector((state) => state.userInfo);
   const [form, setForm] = useState({});
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export const UserSignInForm = () => {
   };
   useEffect(() => {
     // TODO: navigate to location where the user travelled from
+    // setShowLoaders(false);
     user?._id ? navigate("/dashboard") : dispatch(autoLogin());
   }, [user?._id]);
   const handlleOnSubmit = (e) => {
@@ -33,6 +34,7 @@ export const UserSignInForm = () => {
     //call login function
     dispatch(loginAction(form, navigate));
   };
+
   return (
     <div>
       <h1>Login!</h1>

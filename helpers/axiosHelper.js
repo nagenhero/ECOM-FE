@@ -1,5 +1,7 @@
 import axios from "axios";
 import { get } from "mongoose";
+import { toast } from "react-toastify";
+import { fetchNewAccessJWTApi } from "../src/features/users/userAxios";
 const getAccessJWT = () => {
   return sessionStorage.getItem("accessJWT");
 };
@@ -8,11 +10,12 @@ const getRefreshJWT = () => {
 };
 
 export const apiProcessor = async ({
-  method,
-  url,
+  method, //get orginal
+  showToast,
+  url, //authep orginal
   data,
-  isPrivate,
-  isRefreshToken,
+  isPrivate, //true orginal call
+  isRefreshToken, //false orginal call
 }) => {
   const headers = {
     Authorization: isPrivate
@@ -23,16 +26,52 @@ export const apiProcessor = async ({
   };
 
   try {
-    const response = await axios({
+    const responsePending = axios({
       method,
       url,
+      showToast,
       data,
       headers,
       isPrivate,
     });
-    console.log("responsed data", response.data);
-    return response.data;
+    if (showToast) {
+      toast.promise(responsePending, {
+        pending: "please wait...",
+      });
+    }
+
+    const { data: responseData } = await responsePending;
+    const result = await responsePending;
+    console.log("dddd", result);
+    showToast && toast[responseData.status](responseData.message);
+    // console.log("responsed data", data);
+    console.log("eee", responseData);
+    return responseData;
+
+    // return response.data;
   } catch (error) {
-    console.log("error is", error.message);
+    console.log("error1", error);
+    const msg = error?.response?.data?.message || error.message;
+    toast.error(msg);
+
+    console.log("error is", error?.response?.data?.message);
+    if (error?.response?.data?.message == "jwt expired") {
+      //call renew jwt token
+      const { accessToken } = await fetchNewAccessJWTApi();
+      console.log("result", accessToken);
+      if (accessToken) {
+        sessionStorage.setItem("accessJWT", accessToken);
+        //call apiprocessor
+        return apiProcessor({
+          method,
+          url,
+          data,
+          isPrivate,
+          isRefreshToken,
+        });
+      } else {
+      }
+      //get newly access token from refresh token and store in session storage
+    }
   }
 };
