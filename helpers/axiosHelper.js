@@ -39,14 +39,13 @@ export const apiProcessor = async ({
         pending: "please wait...",
       });
     }
-
-    const { data: responseData } = await responsePending;
     const result = await responsePending;
-    console.log("dddd", result);
-    showToast && toast[responseData.status](responseData.message);
+
+    console.log("dddd", result.data);
+    showToast && toast[result.data.status](result.data.message);
     // console.log("responsed data", data);
-    console.log("eee", responseData);
-    return responseData;
+    console.log("eee", result);
+    return result.data;
 
     // return response.data;
   } catch (error) {

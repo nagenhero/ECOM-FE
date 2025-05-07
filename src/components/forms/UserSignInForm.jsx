@@ -28,11 +28,11 @@ export const UserSignInForm = ({ setShowLoaders }) => {
     // setShowLoaders(false);
     user?._id ? navigate("/dashboard") : dispatch(autoLogin());
   }, [user?._id]);
-  const handlleOnSubmit = (e) => {
+  const handlleOnSubmit = async (e) => {
     //prevent default
     e.preventDefault();
     //call login function
-    dispatch(loginAction(form, navigate));
+    await dispatch(loginAction(form, navigate));
   };
 
   return (
