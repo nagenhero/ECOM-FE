@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import img from "../../assets/ww.jpg";
+import { UserSignUpForm } from "../../components/forms/UserSignUpForm";
 // //fName": "john",
 // "lName":"Doe",
 // "email":"johon@gmail.com",
@@ -25,7 +26,12 @@ export const SignUpPage = () => {
         // padding: "2rem",
       }}
     >
-      <Form
+      <div className="w-25 card p-3 shadow-lg">
+        {" "}
+        <UserSignUpForm />{" "}
+      </div>
+
+      {/* <Form
         style={{ width: "550px" }}
         className="card p-3 shadow-lg border border-2 border-dark rounded p-5"
       >
@@ -60,7 +66,7 @@ export const SignUpPage = () => {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <Button type="submit">Submit</Button>
-      </Form>
+      </Form> */}
     </div>
   );
 };

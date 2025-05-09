@@ -51,7 +51,7 @@ export const apiProcessor = async ({
   } catch (error) {
     console.log("error1", error);
     const msg = error?.response?.data?.message || error.message;
-    toast.error(msg);
+    showToast && toast.error(msg);
 
     console.log("error is", error?.response?.data?.message);
     if (error?.response?.data?.message == "jwt expired") {

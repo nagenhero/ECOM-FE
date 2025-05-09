@@ -12,6 +12,18 @@ export const loginApi = (loginObj) => {
     showToast: true,
   });
 };
+
+//CALLING SIGNUPAPI
+export const signUpApi = (signUpObj) => {
+  return apiProcessor({
+    method: "post",
+    url: authEP + "/register",
+    data: signUpObj,
+    isPrivate: false,
+    isRefreshToken: false,
+    showToast: true,
+  });
+};
 export const fetchUserDetailApi = () => {
   const apiObj = {
     method: "get",

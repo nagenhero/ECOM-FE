@@ -3,6 +3,7 @@ import {
   fetchNewAccessJWTApi,
   fetchUserDetailApi,
   loginApi,
+  signUpApi,
 } from "./userAxios";
 import { setUser } from "./userSlice";
 
@@ -17,6 +18,19 @@ export const loginAction = (form, navigate) => async (dispatch) => {
     sessionStorage.setItem("accessJWT", data.accessToken);
     //store the local storage for refresh
     localStorage.setItem("refreshJWT", data.refreshToken);
+  }
+  console.log("type of data:", typeof data);
+  navigate("/dashboard");
+};
+
+//signup action
+export const signUpAction = (form, navigate) => async (dispatch) => {
+  //call login api
+  const data = await signUpApi({ ...form });
+
+  console.log("data is", data);
+  if (data.status == "success") {
+    alert("congratulation sigup sucees");
   }
   console.log("type of data:", typeof data);
   navigate("/dashboard");
