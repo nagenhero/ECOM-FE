@@ -12,6 +12,7 @@ import { ProductPage } from "../pages/product/ProductPage";
 import { MyOrderPage } from "../pages/customer-order/MyOrderPage";
 import { AllOrderPage } from "../pages/orders/allOrderPage";
 import { ReviewsPage } from "../pages/reviews/ReviewsPage";
+import { VerifyUserPage } from "../pages/auth/VerifyUserPage";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
@@ -27,6 +28,8 @@ const AppRoutes = () => {
         <Route path="/" element={<DefaultLayout cartCount={cart.length} />}>
           <Route index element={<HomePage addToCart={addToCart} />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/verify-user" element={<VerifyUserPage />} />
+
           <Route path="/signin" element={<SignInPage />} />
           {/* product landing page for particular product*/}
           <Route path="product/:productid" element={<ProductLanding />} />
