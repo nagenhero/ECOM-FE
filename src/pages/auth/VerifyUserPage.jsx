@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Spinner } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Alert, Spinner } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { activateNewUserApi } from "../../features/users/userAxios";
 
 export const VerifyUserPage = () => {
   const [isPending, setPending] = useState(true);
@@ -15,6 +16,7 @@ export const VerifyUserPage = () => {
         display: "flex",
         justifyContent: "center",
         height: "100vh",
+        flexDirection: "column",
         alignItems: "center",
       }}
     >
@@ -33,6 +35,18 @@ export const VerifyUserPage = () => {
       ) : (
         <p>Loading complete</p>
       )}
+
+      <div>
+        {response.message && (
+          <div>
+            <Alert
+              variant={response.status === "success" ? "success" : "danger"}
+            >
+              {response.message}
+            </Alert>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

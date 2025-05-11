@@ -24,6 +24,16 @@ export const signUpApi = (signUpObj) => {
     showToast: true,
   });
 };
+
+//activate-use
+export const activateNewUserApi = () => {
+  const Obj = {
+    method: "post",
+    url: authEP + "/activate-use",
+  };
+
+  return apiProcessor(Obj);
+};
 export const fetchUserDetailApi = () => {
   const apiObj = {
     method: "get",
