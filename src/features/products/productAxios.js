@@ -9,3 +9,13 @@ export const fetchAllProductApi = (isPrivate) => {
   };
   return apiProcessor(apiObj);
 };
+
+export const deleteProducts = async (_id) => {
+  const apiObj = {
+    method: "delete",
+    url: productEP + "/" + _id,
+    isPrivate: true,
+    isRefreshToken: false,
+  };
+  return apiProcessor(apiObj);
+};

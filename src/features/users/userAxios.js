@@ -47,6 +47,19 @@ export const fetchUserDetailApi = () => {
   return apiProcessor(apiObj);
 };
 
+export const fetchCustomerDetailApi = () => {
+  const apiObj = {
+    method: "get",
+    url: authEP + "/all-customers",
+    isPrivate: true,
+    isRefreshToken: false,
+  };
+
+  console.log("FETCH all customer API");
+
+  return apiProcessor(apiObj);
+};
+
 //reques new refresh renews
 export const fetchNewAccessJWTApi = () => {
   const Obj = {

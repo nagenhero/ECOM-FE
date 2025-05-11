@@ -1,39 +1,33 @@
 import React, { useEffect } from "react";
-import {
-  deleteSingleProductAction,
-  getAllProductsAction,
-} from "../../features/products/productAction";
+import { getAllProductsAction } from "../../features/products/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { MdOutlineEditOff } from "react-icons/md";
+import { getAllCustomersOnly } from "../../features/users/userAction";
 
-export const ProductTable = () => {
+export const CustomerTable = () => {
   const dispatch = useDispatch();
 
-  // TODO: get book list from book store
-  //const books = [];
   const { products } = useSelector((state) => state.productInfo);
 
-  const handleOnDelete = async (id) => {
-    // 1. delete axios call
-    // TODO: call delete action
-    if (window.confirm("are you sure to delete this?")) {
-      dispatch(deleteSingleProductAction(id));
-    }
-  };
+  const { user } = useSelector((state) => state.userInfo);
+  const { customers } = useSelector((state) => state.userInfo);
+  console.log("the prducts are", products);
+  console.log("the user are", user);
+  console.log("the customers are", customers);
 
   useEffect(() => {
-    // TODO: fetch all books for admin
     console.log("product table useeffet");
-
-    dispatch(getAllProductsAction(true));
+    dispatch(getAllCustomersOnly());
   }, []);
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">
-        <div>{products.length} Books found!</div>
+        <div className="bg-dark text-white p-2">
+          {customers.length} Customers found!
+        </div>
 
         <div>
           <input
@@ -48,38 +42,49 @@ export const ProductTable = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>image</th>
-            <th>Desription</th>
-            <th>Update</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Role</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((item, i) => (
+          {customers.map((item, i) => (
             <tr key={item._id}>
               <td>{i + 1}</td>
               <td>
                 <img
+                  src={
+                    item?.thumbnail?.includes("http")
+                      ? item.thumbnail
+                      : `${imageUrl}/${item.thumbnail}`
+                  }
+                  alt=""
+                  width={"120px"}
+                />
+
+                {/* <img src={item.thumbnail} alt="" width={"70px"} /> */}
+              </td>
+              <td>
+                {item.email}
+                {/* <img
                   src={
                     item.thumbnail.includes("http")
                       ? item.thumbnail
                       : `${imageUrl}/${item.thumbnail}`
                   }
                   alt=""
-                  width={"100px"}
-                />
+                  width={"70px"}
+                /> */}
 
                 {/* <img src={item.thumbnail} alt="" width={"70px"} /> */}
               </td>
               <td>
-                <h2>{item.name.slice(0, 30)} ...</h2>
-                <div>{item.price}</div>
-                <div
-                  className={
-                    item.status === "active" ? "text-success" : "text-danger"
-                  }
-                >
-                  Status: {item.status}
-                </div>
+                {item.fName} {item.lName}
+              </td>
+              <td>{item.phone}</td>
+              <td style={{ color: item.role === "admin" ? "red" : "inherit" }}>
+                {item.role}
               </td>
               <td>
                 <Link to={"/admin/book/edit/" + item._id}>
@@ -115,7 +120,6 @@ export const ProductTable = () => {
                   Delete
                 </Button> */}
                 <MdDeleteForever
-                  onClick={() => handleOnDelete(item._id)}
                   className=" "
                   style={{
                     fontSize: "60px",

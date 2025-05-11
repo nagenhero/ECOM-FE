@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import {
+  fetchCustomerDetailApi,
   fetchNewAccessJWTApi,
   fetchUserDetailApi,
   loginApi,
   signUpApi,
 } from "./userAxios";
-import { setUser } from "./userSlice";
+import { setCustomers, setUser } from "./userSlice";
 
 export const loginAction = (form, navigate) => async (dispatch) => {
   //call login api
@@ -44,6 +45,19 @@ export const getUserObj = () => async (dispatch) => {
   if (status == "success") {
     console.log("right track");
     dispatch(setUser(user));
+  }
+};
+
+export const getAllCustomersOnly = () => async (dispatch) => {
+  console.log("why no customersonly");
+  const { status, customers } = await fetchCustomerDetailApi();
+  console.log("why no customers", customers);
+
+  //update store
+
+  if (status == "success") {
+    console.log("right track");
+    dispatch(setCustomers(customers));
   }
 };
 export const autoLogin = () => async (dispatch) => {

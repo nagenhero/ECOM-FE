@@ -11,10 +11,7 @@ import { getAllProductsAction } from "./features/products/productAction";
 
 function App() {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllProductsAction(false));
-  }, []);
+  // dispatch(getAllProductsAction(false));
 
   return (
     <>
