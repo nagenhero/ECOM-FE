@@ -5,8 +5,10 @@ import {
   fetchUserDetailApi,
   loginApi,
   signUpApi,
+  verifyApi,
 } from "./userAxios";
 import { setCustomers, setUser } from "./userSlice";
+import { toast } from "react-toastify";
 
 export const loginAction = (form, navigate) => async (dispatch) => {
   //call login api
@@ -24,13 +26,27 @@ export const loginAction = (form, navigate) => async (dispatch) => {
   navigate("/dashboard");
 };
 
+//click action
+
+export const clickAction = (navigate, sessionId, t) => async (dispatch) => {
+  //call clicklogin api
+  const response = await verifyApi(sessionId, t);
+  console.log("response is", response);
+
+  //2 update data to store
+
+  toast[response.status](response.message);
+
+  navigate("/signin");
+};
+
 //signup action
 export const signUpAction = (form, navigate) => async (dispatch) => {
   //call login api
   const data = await signUpApi({ ...form });
 
   console.log("data is", data);
-  if (data.status == "success") {
+  if (data?.status == "success") {
     alert("congratulation sigup sucees");
   }
   console.log("type of data:", typeof data);

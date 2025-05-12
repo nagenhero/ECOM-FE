@@ -47,4 +47,13 @@ export const userSignUpInputs = [
     Placeholder: "*******",
     type: "password",
   },
+  {
+    label: "thumbnail",
+    controlId: "formGroupThumbnail",
+    name: "thumbnail",
+    required: false,
+    Placeholder: "thumbnail",
+    type: "text",
+    defaultValue: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
 ];

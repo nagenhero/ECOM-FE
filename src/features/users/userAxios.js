@@ -12,7 +12,19 @@ export const loginApi = (loginObj) => {
     showToast: true,
   });
 };
+//verify user
+export const verifyApi = (sessionId, t) => {
+  const apiObj = {
+    method: "post",
+    url: `${authEP}/verify-user?sessionId=${sessionId}&token=${t}`,
+    isPrivate: false,
+    isRefreshToken: false,
+  };
 
+  console.log("FETCH USER API");
+
+  return apiProcessor(apiObj);
+};
 //CALLING SIGNUPAPI
 export const signUpApi = (signUpObj) => {
   return apiProcessor({

@@ -53,17 +53,17 @@ export const CustomerTable = () => {
             <tr key={item._id}>
               <td>{i + 1}</td>
               <td>
-                <img
+                {/* <img
                   src={
-                    item?.thumbnail?.includes("http")
+                    item?.thumbnail?.includes("http" || "https")
                       ? item.thumbnail
                       : `${imageUrl}/${item.thumbnail}`
                   }
                   alt=""
                   width={"120px"}
-                />
+                /> */}
 
-                {/* <img src={item.thumbnail} alt="" width={"70px"} /> */}
+                <img src={item.thumbnail} alt="" width={"70px"} />
               </td>
               <td>
                 {item.email}
