@@ -9,7 +9,18 @@ export const fetchAllProductApi = (isPrivate) => {
   };
   return apiProcessor(apiObj);
 };
+export const postNewProductApi = (newProductObj) => {
+  const apiObj = {
+    method: "post",
+    url: productEP,
+    isPrivate: true,
+    isRefreshToken: false,
+    data: newProductObj,
+    // contentType: "multipart/form-data",
+  };
 
+  return apiProcessor(apiObj);
+};
 export const deleteProducts = async (_id) => {
   const apiObj = {
     method: "delete",

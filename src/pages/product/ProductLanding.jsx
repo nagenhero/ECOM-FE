@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -7,6 +7,7 @@ export const ProductLanding = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [showImage, setShowImage] = useState(0);
+  const [categoryName, setCategoryName] = useState("");
   const handleAddToCart = async () => {
     if (!selectedSize) return alert("Please select a size");
   };
@@ -75,6 +76,7 @@ otherwise use thumbnail */}
             </div>
           </Col>
           <Col md={6}>
+            <h2>Category:{category}</h2>
             <h1>{name}</h1>
             <h2>{price}</h2>
 

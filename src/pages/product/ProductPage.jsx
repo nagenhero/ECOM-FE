@@ -14,7 +14,7 @@ export const ProductPage = () => {
     <UserLayout pageTitle={"prodiuct List"}>
       <h1>this is product page list for admin</h1>
       <div className="d-flex justify-content-center align-item-center">
-        <Link>
+        <Link to="/admin/products/new">
           <Button className="d-flex align-items-center">
             <IoIosAddCircle className="me-2" />
             Add New Product

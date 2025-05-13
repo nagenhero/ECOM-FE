@@ -13,6 +13,7 @@ import { MyOrderPage } from "../pages/customer-order/MyOrderPage";
 import { AllOrderPage } from "../pages/orders/allOrderPage";
 import { ReviewsPage } from "../pages/reviews/ReviewsPage";
 import { VerifyUserPage } from "../pages/auth/VerifyUserPage";
+import { AddNewProductPage } from "../pages/product/AddNewProduct";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
@@ -37,6 +38,7 @@ const AppRoutes = () => {
 
         {/* private routes */}
         <Route path="admin/products" element={<ProductPage />} />
+        <Route path="admin/products/new" element={<AddNewProductPage />} />
         <Route path="admin/customers" element={<CustomerPage />} />
         <Route path="admin/all-orders" element={<AllOrderPage />} />
         <Route path="admin/reviews" element={<ReviewsPage />} />
