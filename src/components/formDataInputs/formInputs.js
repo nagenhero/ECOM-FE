@@ -90,13 +90,7 @@ export const inputFields = [
     placeholder: "Enter available stock",
     min: 0,
   },
-  {
-    label: "Category ID",
-    name: "category",
-    type: "text",
-    required: true,
-    placeholder: "Enter category ObjectId",
-  },
+
   {
     label: "Thumbnail URL",
     name: "thumbnail",

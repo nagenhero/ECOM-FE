@@ -44,102 +44,113 @@ export const ProductTable = () => {
         </div>
       </div>
       <hr />
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>image</th>
-            <th>Desription</th>
-            <th>Update</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((item, i) => (
-            <tr key={item._id}>
-              <td>{i + 1}</td>
-              <td>
-                <img
-                  src={
-                    item.thumbnail.includes("http")
-                      ? item.thumbnail
-                      : `${imageUrl}/${item.thumbnail}`
-                  }
-                  alt=""
-                  width={"100px"}
-                />
-
-                {/* <img src={item.thumbnail} alt="" width={"70px"} /> */}
-              </td>
-              <td>
-                <h2>{item.name.slice(0, 30)} ...</h2>
-                <div>{item.price}</div>
-                <div
-                  className={
-                    item.status === "active" ? "text-success" : "text-danger"
-                  }
-                >
-                  Status: {item.status}
-                </div>
-              </td>
-              <td>
-                <Link to={"/admin/book/edit/" + item._id}>
-                  <MdOutlineEditOff
-                    className=" me-5"
-                    style={{
-                      fontSize: "60px",
-                      backgroundColor: "white",
-                      padding: "10px",
-                      color: "blue",
-
-                      transition: "background-color 0.3s, color 0.3s",
-                      cursor: "pointer",
-                      // keep the icon orange like `text-warning`
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = "blue";
-                      e.currentTarget.style.color = "white";
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = "white";
-                      e.currentTarget.style.color = "blue";
-                    }}
+      <div
+        style={{
+          maxHeight: "600px",
+          overflowY: "auto",
+          paddingRight: "10px",
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+        }}
+      >
+        {" "}
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>image</th>
+              <th>Desription</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((item, i) => (
+              <tr key={item._id}>
+                <td>{i + 1}</td>
+                <td>
+                  <img
+                    src={
+                      item.thumbnail.includes("http")
+                        ? item.thumbnail
+                        : `${imageUrl}/${item.thumbnail}`
+                    }
+                    alt=""
+                    width={"100px"}
                   />
-                  {/* <Button variant="warning" className="me-2">
+
+                  {/* <img src={item.thumbnail} alt="" width={"70px"} /> */}
+                </td>
+                <td>
+                  <h2>{item.name.slice(0, 30)} ...</h2>
+                  <div>{item.price}</div>
+                  <div
+                    className={
+                      item.status === "active" ? "text-success" : "text-danger"
+                    }
+                  >
+                    Status: {item.status}
+                  </div>
+                </td>
+                <td>
+                  <Link to={"/admin/book/edit/" + item._id}>
+                    <MdOutlineEditOff
+                      className=" me-5"
+                      style={{
+                        fontSize: "60px",
+                        backgroundColor: "white",
+                        padding: "10px",
+                        color: "blue",
+
+                        transition: "background-color 0.3s, color 0.3s",
+                        cursor: "pointer",
+                        // keep the icon orange like `text-warning`
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.backgroundColor = "blue";
+                        e.currentTarget.style.color = "white";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.backgroundColor = "white";
+                        e.currentTarget.style.color = "blue";
+                      }}
+                    />
+                    {/* <Button variant="warning" className="me-2">
                     Edit
                   </Button> */}
-                </Link>
-                {/* <Button
+                  </Link>
+                  {/* <Button
                   variant="danger"
                   onClick={() => handleOnDelete(item._id)}
                 >
                   Delete
                 </Button> */}
-                <MdDeleteForever
-                  onClick={() => handleOnDelete(item._id)}
-                  className=" "
-                  style={{
-                    fontSize: "60px",
-                    backgroundColor: "white",
-                    padding: "10px",
+                  <MdDeleteForever
+                    onClick={() => handleOnDelete(item._id)}
+                    className=" "
+                    style={{
+                      fontSize: "60px",
+                      backgroundColor: "white",
+                      padding: "10px",
 
-                    transition: "background-color 0.3s, color 0.3s",
-                    cursor: "pointer",
-                    color: "red", // keep the icon orange like `text-warning`
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor = "red";
-                    e.currentTarget.style.color = "white";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = "white";
-                    e.currentTarget.style.color = "red";
-                  }}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+                      transition: "background-color 0.3s, color 0.3s",
+                      cursor: "pointer",
+                      color: "red", // keep the icon orange like `text-warning`
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = "red";
+                      e.currentTarget.style.color = "white";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = "white";
+                      e.currentTarget.style.color = "red";
+                    }}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>{" "}
+      </div>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import { AllOrderPage } from "../pages/orders/allOrderPage";
 import { ReviewsPage } from "../pages/reviews/ReviewsPage";
 import { VerifyUserPage } from "../pages/auth/VerifyUserPage";
 import { AddNewProductPage } from "../pages/product/AddNewProduct";
+import { AddNewProductPage1 } from "../pages/product/AddNewProduct1";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
