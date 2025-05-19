@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { userSignInInputs } from "../formDataInputs/userSignInInputs";
-import CustomInput from "../customInput/CustomInput";
+
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { autoLogin, loginAction } from "../../features/users/userAction";
 import { useDispatch, useSelector } from "react-redux";
+import CustomInput from "../customInput/CustomInput";
 
 export const UserSignInForm = ({ setShowLoaders }) => {
   const { user } = useSelector((state) => state.userInfo);

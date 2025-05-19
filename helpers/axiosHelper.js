@@ -16,13 +16,15 @@ export const apiProcessor = async ({
   data,
   isPrivate, //true orginal call
   isRefreshToken, //false orginal call
+  contentType = "application/json",
 }) => {
   const headers = {
     Authorization: isPrivate
       ? isRefreshToken
         ? getRefreshJWT()
         : getAccessJWT()
-      : null, // No auth if not private
+      : null,
+    "content-type": contentType, // No auth if not private
   };
 
   try {
@@ -32,7 +34,6 @@ export const apiProcessor = async ({
       showToast,
       data,
       headers,
-      isPrivate,
     });
     if (showToast) {
       toast.promise(responsePending, {

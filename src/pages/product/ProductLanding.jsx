@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+const imageUrl = import.meta.env.VITE_APP_IMAGE_URL;
 
 export const ProductLanding = () => {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -52,13 +53,23 @@ export const ProductLanding = () => {
               {/* If imageLists?.[showImage] is truthy (i.e., it exists and is not null/undefined/empty),
 then use imageLists[showImage],
 otherwise use thumbnail */}
+
               <img
+                src={
+                  thumbnail.includes("http")
+                    ? thumbnail
+                    : `${imageUrl}/${thumbnail}`
+                }
+                alt=""
+                width={"100%"}
+              />
+              {/* <img
                 src={
                   imageLists?.[showImage] ? imageLists[showImage] : thumbnail
                 }
                 alt=""
                 width={"100%"}
-              />
+              /> */}
             </div>
             <div
               className=" m-auto d-flex overflow-scroll gap-2 py-3"

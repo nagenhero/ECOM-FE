@@ -68,20 +68,20 @@ export const inputFields = [
   {
     label: "Sizes",
     name: "sizes",
-    type: "select-multiple",
+    type: "text",
     options: ["S", "M", "L", "XL"],
     required: false,
     placeholder: "Select sizes",
   },
-  {
-    label: "Image URLs",
-    name: "imageLists",
-    type: "text",
-    as: "textarea",
-    required: false,
-    placeholder: "Enter image URLs separated by commas",
-    rows: 3,
-  },
+  // {
+  //   label: "Image URLs",
+  //   name: "imageLists",
+  //   type: "text",
+  //   as: "textarea",
+  //   required: false,
+  //   placeholder: "Enter image URLs separated by commas",
+  //   rows: 3,
+  // },
   {
     label: "Stock",
     name: "stock",
@@ -91,13 +91,13 @@ export const inputFields = [
     min: 0,
   },
 
-  {
-    label: "Thumbnail URL",
-    name: "thumbnail",
-    type: "text",
-    required: true,
-    placeholder: "Enter thumbnail image URL",
-  },
+  // {
+  //   label: "Thumbnail URL",
+  //   name: "thumbnail",
+  //   type: "text",
+  //   required: true,
+  //   placeholder: "Enter thumbnail image URL",
+  // },
   {
     label: "Average Rating",
     name: "averageRating",

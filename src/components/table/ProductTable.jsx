@@ -8,6 +8,7 @@ import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { MdOutlineEditOff } from "react-icons/md";
+const imageUrl = import.meta.env.VITE_APP_IMAGE_URL;
 
 export const ProductTable = () => {
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ export const ProductTable = () => {
                   </div>
                 </td>
                 <td>
-                  <Link to={"/admin/book/edit/" + item._id}>
+                  <Link to={"/admin/products/edit/" + item._id}>
                     <MdOutlineEditOff
                       className=" me-5"
                       style={{

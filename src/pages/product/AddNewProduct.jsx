@@ -19,17 +19,21 @@ export const AddNewProductPage = () => {
   const { form, handleOnChange } = useForm(initialState);
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const processedData = {
-      ...form,
-      imageLists: form.imageLists.split(","),
-    };
+    // const processedData = {
+    //   ...form,
+    //   imageLists: form.imageLists.split(","),
+    // };
+    const formData = new FormData();
+    Object.keys(form).forEach((key) => {
+      formData.append(key, form[key]);
+    });
     // const success = await dispatch(postNewBookAction(form));s
     // console.log(2000, success);
     // const formData = new FormData();
     // Object.keys(form).forEach((key) => {
     //   formData.append(key, form[key]);
     // });
-    const success = await dispatch(postNewProductAction(processedData));
+    const success = await dispatch(postNewProductAction(formData));
     console.log(2000, success);
 
     if (success) {
@@ -121,35 +125,14 @@ export const AddNewProductPage = () => {
         <div className="mt-5">
           <h3 className="p-3">Fill up the form to add new Product</h3>
           <Form onSubmit={handleOnSubmit}>
-            {/* <Form.Group controlId="bookFile">
-            <Form.Label>Upload Book Cover Image</Form.Label>
-            <Form.Control
-              type="file"
-              name="bookFile"
-              accept="image/*" // Only accept image files
-              onChange={handleOnChange}
-            />
-          </Form.Group> */}
-            {/* <select
-              name="category"
-              // value={form.category}
-              onChange={handleOnChange}
-              required
-            >
-              <option value="">-- Select Category --</option>
-              {categories.map((cat) => (
-                <option key={cat._id} value={cat._id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select> */}
             <div className="d-flex gap-3 mb-3">
               <Form.Group controlId="category">
-                <Form.Label>Category</Form.Label>
+                <Form.Label className="text-dark fw-bold">Category</Form.Label>
                 <Form.Select
                   name="category"
                   onChange={handleOnChange}
                   required
+                  className="bg-warning"
                   // value={form.category} // Uncomment if using controlled input
                 >
                   <option value="">-- Select Category --</option>
@@ -162,12 +145,15 @@ export const AddNewProductPage = () => {
               </Form.Group>
 
               <Form.Group controlId="subCategory">
-                <Form.Label>Subcategory</Form.Label>
+                <Form.Label className="text-dark fw-bold">
+                  Subcategory
+                </Form.Label>
                 <Form.Select
                   name="subCategory"
                   // value={form.subCategory}
                   onChange={handleOnChange}
                   required
+                  className="bg-warning"
                 >
                   <option value="">-- Select Subcategory --</option>
                   {subcategories.map((sub) => (
@@ -178,35 +164,23 @@ export const AddNewProductPage = () => {
                 </Form.Select>
               </Form.Group>
             </div>
+            <div>
+              <Form.Group controlId="productFile">
+                <Form.Label>Upload products image</Form.Label>
+                <Form.Control
+                  className="w-50"
+                  type="file"
+                  name="productFile"
+                  accept="image/*"
+                  onChange={handleOnChange}
+                />
+              </Form.Group>
+            </div>
+
             {inputFields.map((input, i) => (
               <CustomInput key={i} {...input} onChange={handleOnChange} />
             ))}
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleOnChange}
-              required
-            >
-              <option value="">-- Select Category --</option>
-              {categories.map((cat) => (
-                <option key={cat._id} value={cat._id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-            <select
-              name="subCategory"
-              value={form.subCategory}
-              onChange={handleOnChange}
-              required
-            >
-              <option value="">-- Select Subcategory --</option>
-              {subcategories.map((sub) => (
-                <option key={sub._id} value={sub._id}>
-                  {sub.name}
-                </option>
-              ))}
-            </select>
+
             <div className="d-grid">
               <Button type="submit">Submit New Product</Button>
             </div>

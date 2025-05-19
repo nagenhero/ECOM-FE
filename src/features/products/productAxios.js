@@ -16,6 +16,7 @@ export const postNewProductApi = (newProductObj) => {
     isPrivate: true,
     isRefreshToken: false,
     data: newProductObj,
+    contentType: "multipart/form-data",
     // contentType: "multipart/form-data",
   };
 
@@ -30,3 +31,14 @@ export const deleteProducts = async (_id) => {
   };
   return apiProcessor(apiObj);
 };
+export const updateAProduct = async ({ _id, ...prodObject }) => {
+  const apiObj = {
+    method: "patch",
+    url: productEP + "/" + _id,
+    isPrivate: true,
+    isRefreshToken: false,
+    data: prodObject,
+  };
+  return apiProcessor(apiObj);
+};
+export const fetchSingleProduct = async (_id) => {};
