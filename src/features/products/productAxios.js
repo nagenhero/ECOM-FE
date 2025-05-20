@@ -31,13 +31,16 @@ export const deleteProducts = async (_id) => {
   };
   return apiProcessor(apiObj);
 };
-export const updateAProduct = async ({ _id, ...prodObject }) => {
+export const updateAProduct = async (_id, obj) => {
+  console.log("1.Updating product with ID:", _id);
+  console.log("1.Product object:", obj);
   const apiObj = {
     method: "patch",
     url: productEP + "/" + _id,
     isPrivate: true,
     isRefreshToken: false,
-    data: prodObject,
+    data: obj,
+    contentType: "multipart/form-data",
   };
   return apiProcessor(apiObj);
 };

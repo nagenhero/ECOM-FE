@@ -19,6 +19,10 @@ export const getAllProductsAction = (isPrivate) => async (dispatch) => {
 };
 
 export const postNewProductAction = (obj) => async (dispatch) => {
+  console.log("FormData contents:");
+  for (let [key, value] of obj.entries()) {
+    console.log(`${key}:`, value);
+  }
   // call axios to send data
   const pending = postNewProductApi(obj);
   toast.promise(pending, {
@@ -58,7 +62,13 @@ export const deleteSingleProductAction = (id) => async (dispatch) => {
   dispatch(getAllProductsAction(true));
 };
 export const updateSingleProductAction = (obj) => async (dispatch) => {
-  const pending = updateAProduct(obj);
+  console.log("FormData contents of uedit product:");
+  for (let [key, value] of obj.entries()) {
+    console.log(`${key}:`, value);
+  }
+  const _id = obj.get("_id"); // Extract _id
+
+  const pending = updateAProduct(_id, obj);
   toast.promise(pending, {
     pending: "Please wait....",
   });

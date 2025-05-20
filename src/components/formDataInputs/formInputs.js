@@ -68,7 +68,7 @@ export const inputFields = [
   {
     label: "Sizes",
     name: "sizes",
-    type: "text",
+    type: "select-multiple",
     options: ["S", "M", "L", "XL"],
     required: false,
     placeholder: "Select sizes",
