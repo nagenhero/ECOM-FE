@@ -9,7 +9,12 @@ const useForm = (initialState) => {
     if (name == "status") {
       value = checked ? "active" : "inactive";
     }
-
+    // if (name === "images" && files) {
+    //   setForm((prev) => ({
+    //     ...prev,
+    //     [name]: Array.from(files), // store multiple files
+    //   }));
+    // }
     if (name == "productFile" && files) {
       setForm({
         ...form,

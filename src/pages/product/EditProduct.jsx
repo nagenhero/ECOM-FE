@@ -17,6 +17,7 @@ export const EditProduct = () => {
   const { form, handleOnChange, setForm } = useForm({});
   const navigate = useNavigate();
   const [images, setImage] = useState([]);
+  const [imgToDelete, setImgToDelte] = useState([]);
   const { products, selectedProduct } = useSelector(
     (store) => store.productInfo
   );
@@ -46,7 +47,7 @@ export const EditProduct = () => {
   console.log("selectedproduct", selectedProduct);
   const thumbnail = form.thumbnail;
   const imageListed = form.imageLists;
-  console.log("thumbnail", thumbnail);
+  // console.log("thumbnail", thumbnail);
   const handleOnImageSelect = (e) => {
     const a = [...e.target.files];
     if (e.target.files.length > 2) {
@@ -62,12 +63,16 @@ export const EditProduct = () => {
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    if (imgToDelete.includes(form.thumbnail)) {
+      return alert("ypu canot delete the selected thumbnail");
+    }
     const { __v, createdAt, updatedAt, ...rest } = form;
     const formData = new FormData();
     for (const key in rest) {
       formData.append(key, rest[key]);
     }
     images.map((img) => formData.append("images", img));
+    imgToDelete.map((img) => formData.append("imgToDelete", img));
     console.log("formdata", formData);
     // 🔍 Debug the formData contents
     console.log("FormData contents:");
@@ -85,6 +90,14 @@ export const EditProduct = () => {
     }
     // alert("are you sure?");
   };
+  const handleOnImageToDelete = (e) => {
+    const { checked, value } = e.target;
+    // console.log(checked, value);
+    checked
+      ? setImgToDelte([...imgToDelete, value])
+      : setImgToDelte(imgToDelete.filter((img) => img !== value));
+  };
+  console.log(imgToDelete);
   return (
     <div>
       <UserLayout>
@@ -121,10 +134,22 @@ export const EditProduct = () => {
           <div className=" d-flex">
             {form.imageLists?.map((imgs) => (
               <div key={imgs} className="m-2">
-                <Form.Check type="radio" name="thumbnail" />
-                <Form.Label>Make thumbnail</Form.Label>
-                <Form.Check type="checkbox" />
-                <Form.Label>Delete</Form.Label>
+                <Form.Check
+                  type="radio"
+                  name="thumbnail"
+                  value={imgs}
+                  checked={form.thumbnail === imgs}
+                  onChange={handleOnChange}
+                  label={"Thumbnail"}
+                />
+
+                <Form.Check
+                  type="checkbox"
+                  label={"Delete"}
+                  value={imgs}
+                  onChange={handleOnImageToDelete}
+                />
+
                 <img
                   className="mb-3 img-thumbnail"
                   src={`${imageUrl}/${imgs}`}
