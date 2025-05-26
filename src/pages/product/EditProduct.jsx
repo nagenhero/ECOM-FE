@@ -45,6 +45,7 @@ export const EditProduct = () => {
   console.log("form", form);
   console.log("selectedproduct", selectedProduct);
   const thumbnail = form.thumbnail;
+  const imageListed = form.imageLists;
   console.log("thumbnail", thumbnail);
   const handleOnImageSelect = (e) => {
     const a = [...e.target.files];
@@ -117,13 +118,21 @@ export const EditProduct = () => {
               value={form[input.name]}
             />
           ))}
-          <div>
-            <img
-              className="mb-3 img-thumbnail"
-              src={`${imageUrl}/${thumbnail}`}
-              alt=""
-              width={"140px"}
-            />
+          <div className=" d-flex">
+            {form.imageLists?.map((imgs) => (
+              <div key={imgs} className="m-2">
+                <Form.Check type="radio" name="thumbnail" />
+                <Form.Label>Make thumbnail</Form.Label>
+                <Form.Check type="checkbox" />
+                <Form.Label>Delete</Form.Label>
+                <img
+                  className="mb-3 img-thumbnail"
+                  src={`${imageUrl}/${imgs}`}
+                  alt=""
+                  width={"140px"}
+                />
+              </div>
+            ))}
           </div>
           <Form.Group className="mb-3">
             <Form.Label>upload more image (max 2)</Form.Label>
