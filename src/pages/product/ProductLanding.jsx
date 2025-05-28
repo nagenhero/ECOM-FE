@@ -48,13 +48,13 @@ export const ProductLanding = () => {
           </div> */}
             <div
               className="m-auto"
-              style={{ maxWidth: "500px", backgroundColor: "red" }}
+              style={{ maxWidth: "500px", backgroundColor: "white" }}
             >
               {/* If imageLists?.[showImage] is truthy (i.e., it exists and is not null/undefined/empty),
 then use imageLists[showImage],
 otherwise use thumbnail */}
 
-              <img
+              {/* <img
                 src={
                   thumbnail.includes("http")
                     ? thumbnail
@@ -62,7 +62,8 @@ otherwise use thumbnail */}
                 }
                 alt=""
                 width={"100%"}
-              />
+              /> */}
+
               {/* <img
                 src={
                   imageLists?.[showImage] ? imageLists[showImage] : thumbnail
@@ -70,6 +71,23 @@ otherwise use thumbnail */}
                 alt=""
                 width={"100%"}
               /> */}
+              <img
+                src={
+                  imageLists?.[showImage]
+                    ? imageLists[showImage].includes("http")
+                      ? imageLists[showImage]
+                      : `${imageUrl}/${imageLists[showImage]}`
+                    : thumbnail
+                }
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "600px", // or any fixed height you prefer
+                  objectFit: "contain", // ensures image covers the box without distortion
+                  borderRadius: "8px", // optional, for rounded corners
+                }}
+                s
+              />
             </div>
             <div
               className=" m-auto d-flex overflow-scroll gap-2 py-3"
@@ -78,7 +96,7 @@ otherwise use thumbnail */}
               {console.log("ddD", imageLists)}
               {imageLists.map((item, i) => (
                 <img
-                  src={item}
+                  src={item.includes("http") ? item : `${imageUrl}/${item}`}
                   width={"100px"}
                   className="img-thumbnail"
                   onClick={() => setShowImage(i)}
