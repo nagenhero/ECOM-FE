@@ -24,10 +24,15 @@ export const UserSignInForm = ({ setShowLoaders }) => {
     });
     console.log("form is", form);
   };
+
+  const path = location?.state?.from ?? "/dashboard";
+  console.log("path is", path);
+  console.log("location", location);
+
   useEffect(() => {
     // TODO: navigate to location where the user travelled from
     // setShowLoaders(false);
-    user?._id ? navigate("/dashboard") : dispatch(autoLogin());
+    user?._id ? navigate(path) : dispatch(autoLogin());
   }, [user?._id]);
   const handlleOnSubmit = async (e) => {
     //prevent default

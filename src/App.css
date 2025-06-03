@@ -142,3 +142,17 @@ video{
 
 /* end of cart componet styling
  */
+ .cart-count
+ {
+  width:30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 100%;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:-5px;
+  right:-5px;
+  transition: all 0.5s;
+ }

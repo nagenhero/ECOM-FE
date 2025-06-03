@@ -12,8 +12,11 @@ export const getAllProductsAction = (isPrivate) => async (dispatch) => {
   //1. fetch products
   const fetchedData = await fetchAllProductApi(isPrivate);
   const { status, products } = fetchedData;
+  console.log("status & producs are", status, products);
+
   //2 update data to store
   if (status == "success") {
+    console.log("radhana hogaya meih");
     dispatch(setProducts(products));
   }
 };

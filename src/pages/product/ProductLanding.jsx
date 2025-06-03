@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { setCart } from "../../features/cart/cartSlice";
+import { toast } from "react-toastify";
 const imageUrl = import.meta.env.VITE_APP_IMAGE_URL;
 
 export const ProductLanding = () => {
+  const dispatch = useDispatch();
+  const { selectedProduct } = useSelector((state) => state.productInfo);
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [showImage, setShowImage] = useState(0);
@@ -16,11 +20,15 @@ export const ProductLanding = () => {
   const { products } = useSelector((store) => store.productInfo);
   const { productid } = useParams();
   const product = products.find((item) => item._id === productid);
+  console.log("products", products);
+  console.log("selectedproducts", selectedProduct);
+
   console.log("product", product);
 
   if (!product?._id) {
     alert("Product not found");
   }
+
   const {
     _id,
     name,
@@ -34,6 +42,10 @@ export const ProductLanding = () => {
     stock,
     imageLists,
   } = product;
+  const handleOnAddToCart = async () => {
+    toast("Product has been added to cart");
+    dispatch(setCart(product));
+  };
   return (
     <>
       <Container fluid className="mt-5">
@@ -77,7 +89,7 @@ otherwise use thumbnail */}
                     ? imageLists[showImage].includes("http")
                       ? imageLists[showImage]
                       : `${imageUrl}/${imageLists[showImage]}`
-                    : thumbnail
+                    : `${imageUrl}/${thumbnail}`
                 }
                 alt=""
                 style={{
@@ -201,7 +213,7 @@ otherwise use thumbnail */}
 
             <Button
               className=""
-              onClick={handleAddToCart}
+              onClick={handleOnAddToCart}
               style={{
                 marginTop: "20px",
                 backgroundColor: "rgb(35, 185, 45)",

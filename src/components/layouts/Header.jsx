@@ -12,9 +12,11 @@ import logo from "../../assets/aa.png";
 import { resetUser } from "../../features/users/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutApi } from "../../features/users/userAxios";
+import { GiShoppingCart } from "react-icons/gi";
 const isAuthenticated = true || false;
 export const Header = ({ cartCount }) => {
   const { user } = useSelector((store) => store.userInfo);
+  const { cart } = useSelector((store) => store.cartInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
@@ -71,7 +73,7 @@ export const Header = ({ cartCount }) => {
                     padding: "0px",
                   }}
                 >
-                  <button
+                  {/* <button
                     onClick={() => addToCart(product)}
                     className="add-to-cart-button"
                   >
@@ -84,10 +86,14 @@ export const Header = ({ cartCount }) => {
                       }}
                     />
                     Cart({cartCount})
-                  </button>
+                  </button> */}
                 </div>
               </>
             )}
+            <Link to="/cart" className=" nav-link position-relative ">
+              <div className="cart-count position-absolute">{cart.length}</div>
+              <GiShoppingCart className="fs-1" />
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

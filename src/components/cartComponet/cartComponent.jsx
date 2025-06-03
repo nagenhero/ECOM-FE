@@ -111,7 +111,7 @@ export const CartComponent = ({ addTOCart }) => {
           <div key={product.id} className="product-card">
             <img
               src={product.image}
-              alt={product.name}
+              alt={product.xname}
               className="product-image"
             />
             <h3>{product.name}</h3>

@@ -15,6 +15,13 @@ const productSlice = createSlice({
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload;
     },
+    // setCart: (state, action) => {
+    //   state.cart = [...state.cart, action.payload];
+    // },
+    // removeCart: (state, action) => {
+    //   // state.cart.filter((item) => item._id !== action.payload);
+    //   state.cart = state.cart.filter((item) => item._id !== action.payload);
+    // },
   },
 });
 export const { setProducts, setSelectedProduct } = productSlice.actions;

@@ -16,6 +16,9 @@ import { VerifyUserPage } from "../pages/auth/VerifyUserPage";
 import { AddNewProductPage } from "../pages/product/AddNewProduct";
 import { AddNewProductPage1 } from "../pages/product/AddNewProduct1";
 import { EditProduct } from "../pages/product/EditProduct";
+import CartPage from "../pages/cart/CartPage";
+import ThankyouPage from "../pages/thankyou/ThankyouPage";
+import DeliveryAddress from "../pages/deliveryDetails/DeliveryAddress";
 
 const AppRoutes = () => {
   const [cart, setCart] = useState([]);
@@ -29,13 +32,16 @@ const AppRoutes = () => {
       <Routes>
         {/* public routes  */}
         <Route path="/" element={<DefaultLayout cartCount={cart.length} />}>
-          <Route index element={<HomePage addToCart={addToCart} />} />
+          <Route index element={<HomePage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/verify-user" element={<VerifyUserPage />} />
 
           <Route path="/signin" element={<SignInPage />} />
           {/* product landing page for particular product*/}
           <Route path="product/:productid" element={<ProductLanding />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/thankyou" element={<ThankyouPage />} />
+          <Route path="/delivery-details" element={<DeliveryAddress />} />
         </Route>
 
         {/* private routes */}
